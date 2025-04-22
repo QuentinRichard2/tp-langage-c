@@ -568,43 +568,55 @@ int main() {
     charger_score();
 
     // Demande du choix à l'utilisateur
-    printf("Quel est votre choix ?\n");
-    scanf("%d", &choix);
+    do{
+        printf("+-----------------------------------+\n");
+        printf("|1 : Addition                       |\n");
+        printf("|2 : Soustraction                   |\n");
+        printf("|3 : Multiplication                 |\n");
+        printf("|4 : Tables des multiplications     |\n");
+        printf("|5 : Division                       |\n");
+        printf("|6 : Carré                          |\n");
+        printf("|0 : Sortir du jeu                  |\n");
+        printf("+-----------------------------------+\n");
+        printf("Quel est votre choix ?\n");
 
-    // Exécution selon le choix
-    if (choix == 1) {
-        printf("Addition\n");
-        addition();
-    }
-    else if (choix == 2) {
-        printf("Soustraction\n");
-        soustraction();
-    }
-    else if (choix == 3) {
-        printf("Multiplication\n");
-        multiplication();
-    }
-    else if (choix == 4) {
-        printf("Tables des multiplications\n");
-        table_de_multiplication();
-    }
-    else if (choix == 5) {
-        printf("Divisions\n");
-        division();
-    }
-    else if (choix == 6) {
-        printf("carre\n");
-        carre();
-    }
-    else if (choix == 0) {
-        printf("Sortie du jeu.\n");
-    }
-    else {
-        printf("Choix invalide ! Veuillez entrer un nombre entre 0 et 5.\n");
-    }
+        scanf("%d", &choix);
 
+
+        while (choix < 0 || choix > 6) {
+            printf(" chiffre incorrect . Veuillez ressayer.\n");
+            printf("Quel est votre choix ?\n");
+            scanf("%d", &choix);
+        }
+
+        // Exécution selon le choix
+
+        switch (choix) {
+            case 1:
+                addition();
+                break;
+            case 2:
+                soustraction();
+                break;
+            case 3:
+                multiplication();
+                break;
+            case 4:
+                table_de_multiplication();
+                break;
+            case 5:
+                division();
+                break;
+            case 6:
+                carre();
+                break;
+            default:
+                printf("Option non valide.\n");
+        }
+    }while (choix != 0);
     printf("Merci de votre visite\n");
 	printf("Votre score total est : %d\n", score_total);  // Affichage du score total
 	return 0;
 
 }
+
